@@ -204,7 +204,7 @@ int this_main() {
 
 }
 
-void buttonInterrupt(int button) {
+void buttonInterrupt(int button) { // Global Button Functions
   // 1 - bottom left
   // 2 - bottom right
   // 3 - top left
@@ -219,16 +219,17 @@ void buttonInterrupt(int button) {
     // printf("Invert ASCII GUI.");
     displayInvert = !displayInvert;
     button = 0;
+
   }
 
-  if(programMode == programs && button != 0) { // Press any key to stop alarm.
-    printf("Stop alarm.\n\r");
-    alarming = 0;
-    alarmSet = setAlarm;
-    newProgramMode = 1;
-    button = 0;
-    return;
-  }
+  // if(programMode == programs && button != 0) { // Press any key to stop alarm.
+  //   printf("Stop alarm.\n\r");
+  //   alarming = 0;
+  //   alarmSet = setAlarm;
+  //   newProgramMode = 1;
+  //   button = 0;
+  //   return;
+  // }
 
   if(button == buttonA && !setAlarmMode && !setTimeMode) { // Toggle program modes.
     newProgramMode++;
@@ -264,7 +265,8 @@ void timeInterrupt() {
   if(timer == alarmTime && alarmSet == 1) {
     alarmSet = 0;
     alarming = 1;
-    programMode = 5; // Alarming.
+    newProgramMode = 5; // Alarming.
+    updateProgram(0);
   }
 
   // Regular timing, reset time and daily alarm at midnight.
@@ -430,11 +432,22 @@ void updateProgram(int input) {
 
       //display blinking time
 
+      if(input != 0) {
+
+        printf("Stop alarm.\n\r");
+        alarming = 0;
+        alarmSet = setAlarm;
+        newProgramMode = 1;
+        return;
+
+      }
+
     break;
 
     default:
 
     break;
+
   }
 
   //updateDisplay();
