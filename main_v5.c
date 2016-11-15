@@ -74,8 +74,6 @@ void timeInterrupt();
 void buttonInterrupt();
 int button;
 
-
-
 //colon
 char ascii_colon[7][1] = {
   {' '},
@@ -297,7 +295,7 @@ void timeInterrupt() {
     }
   }
 
-  updateProgram(0);
+  // updateProgram(0);
 
   updateDisplay();
 
