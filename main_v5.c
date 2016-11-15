@@ -29,7 +29,7 @@ int hours = 0;
 int setTimeMode = 0;
 
 // STOPWATCH
-int stopwatchTimer = 0;
+long stopwatchTimer = 0;
 int stopwatchCentiseconds = 0;
 int stopwatchSeconds = 0;
 int stopwatchMinutes = 0;
